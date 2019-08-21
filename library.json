@@ -1,6 +1,6 @@
 {
   "name" : "kbide-plugin-oled",
-  "title": "OLED",
+  "title": "OLED 128x64",
   "keywords": "oled, esp32, esp8266, arduino",
   "description": "Plugin oled for KB-IDE",
   "git": "https://github.com/cmmc-kbide/kbide-plugin-oled/",
