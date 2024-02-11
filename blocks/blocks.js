@@ -1,7 +1,3 @@
-const app = require("electron").remote;
-const nativeImage = require("electron").nativeImage;
-const dialog = app.dialog;
-
 let floyd_steinberg = function (imageData, w) {
   var imageDataLength = imageData.length;
   var lumR = [],
