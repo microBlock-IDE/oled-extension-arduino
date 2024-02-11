@@ -7,21 +7,7 @@
     icon: "/static/icon.png", // Category icon
     color: "#2980B9", // Category color (recommend some blocks color)
     blocks: [ // Blocks in Category
-        {
-            xml:
-                `<block type="i2c128x64_display_begin">
-                <value name="SDA">
-                    <shadow type="math_number">
-                        <field name="NUM">21</field>
-                    </shadow>
-                </value>
-                <value name="SCL">
-                    <shadow type="math_number">
-                        <field name="NUM">22</field>
-                    </shadow>
-                </value>
-            </block>`
-        },
+        "i2c128x64_display_begin",
         {
             xml: `<block type="variables_set">
                         <field name="VAR">img1</field>
