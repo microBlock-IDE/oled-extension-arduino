@@ -5,6 +5,8 @@ const ssd1306_init = () => {
 }
 
 Blockly.JavaScript["i2c128x64_create_image"] = function (block) {
+    Blockly.JavaScript.definitions_['include']['vector'] = '#include <vector>';
+
     var dataurl = block.inputList[1].fieldRow[0].value_;
     var image = nativeImage.createFromDataURL(dataurl);
     var size = image.getSize();
