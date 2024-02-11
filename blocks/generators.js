@@ -4,38 +4,37 @@ const ssd1306_init = () => {
     Blockly.JavaScript.definitions_['define']['display'] = 'Adafruit_SSD1306 display(128, 64, &Wire, -1);';
 }
 
-var createBuffer = function (pixels, width, height) {
-    var depth = 4,
-        pixelsLen = pixels.length,
-        unpackedBuffer = [],
-        threshold = 120;
-
-    var buffer = new Buffer((width * (Math.ceil(height / 8) * 8)) / 8);
-    buffer.fill(0x00);// filter pixels to create monochrome image data
-    for (var i = 0; i < pixelsLen; i += depth) { // just take the red value
-        var pixelVal = pixels[i + 1] = pixels[i + 2] = pixels[i];
-        pixelVal = (pixelVal > threshold)
-            ? 1
-            : 0;
-        unpackedBuffer[i / depth] = pixelVal; // push to unpacked buffer list
-    }
-    for (var x = 0; x < width; x++) {
-        for (var y = 0; y < height; y += 8) {
-            for (var cy = 0; cy < 8; cy++) {
-                var iy = y + cy;
-                if (iy >= height) { break; }
-                buffer[x * Math.ceil(height / 8) +
-                    Math.floor(y / 8)] |= unpackedBuffer[iy * width + x] << cy;
-            }
-        }
-    }
-    return buffer;
-};
-
 Blockly.JavaScript["i2c128x64_create_image"] = function (block) {
-    var dataurl = block.inputList[1].fieldRow["0"].src_;
+    var dataurl = block.inputList[1].fieldRow[0].value_;
     var image = nativeImage.createFromDataURL(dataurl);
     var size = image.getSize();
+    const createBuffer = (pixels, width, height) => {
+        var depth = 4,
+            pixelsLen = pixels.length,
+            unpackedBuffer = [],
+            threshold = 120;
+    
+        var buffer = new Buffer((width * (Math.ceil(height / 8) * 8)) / 8);
+        buffer.fill(0x00);// filter pixels to create monochrome image data
+        for (var i = 0; i < pixelsLen; i += depth) { // just take the red value
+            var pixelVal = pixels[i + 1] = pixels[i + 2] = pixels[i];
+            pixelVal = (pixelVal > threshold)
+                ? 1
+                : 0;
+            unpackedBuffer[i / depth] = pixelVal; // push to unpacked buffer list
+        }
+        for (var x = 0; x < width; x++) {
+            for (var y = 0; y < height; y += 8) {
+                for (var cy = 0; cy < 8; cy++) {
+                    var iy = y + cy;
+                    if (iy >= height) { break; }
+                    buffer[x * Math.ceil(height / 8) +
+                        Math.floor(y / 8)] |= unpackedBuffer[iy * width + x] << cy;
+                }
+            }
+        }
+        return buffer;
+    };
     var buff = createBuffer(image.getBitmap(), size.width, size.height);
     var hexStringArr = "";
     for (let i = 1; i <= buff.length; i++) {

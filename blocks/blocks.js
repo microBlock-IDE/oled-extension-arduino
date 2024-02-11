@@ -1,4 +1,4 @@
-let floyd_steinberg = function (imageData, w) {
+const floyd_steinberg = (imageData, w) => {
   var imageDataLength = imageData.length;
   var lumR = [],
     lumG = [],
@@ -32,7 +32,7 @@ let floyd_steinberg = function (imageData, w) {
       2] = imageData[currentPixel];
   }
   return imageData;
-}
+};
 
 Blockly.Blocks['i2c128x64_display_begin'] = {
   init: function () {
@@ -65,10 +65,13 @@ Blockly.Blocks["i2c128x64_create_image"] = {
             filters: [{ name: "Images PNG", extensions: ["png"] }],
             properties: ["openFile"]
           };
-          dialog.showOpenDialog(dialogOptions, imageFileName => {
-            console.log(imageFileName);
-            if (imageFileName != undefined) {
-              imageFileName = imageFileName[0];
+          dialog.showOpenDialog(dialogOptions).then(({ canceled, filePaths }) => {
+            if (canceled) {
+              return;
+            }
+            console.log(filePaths);
+            if (filePaths?.[0]) {
+              const imageFileName = filePaths[0];
               //--- resize image ---//
               let image = nativeImage.createFromPath(imageFileName);
               let size = image.getSize();
