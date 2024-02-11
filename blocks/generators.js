@@ -113,7 +113,7 @@ Blockly.JavaScript["i2c128x64_display_draw_line"] = function (block) {
     var value_x1 = Blockly.JavaScript.valueToCode(block, "x1", Blockly.JavaScript.ORDER_ATOMIC);
     var value_y1 = Blockly.JavaScript.valueToCode(block, "y1", Blockly.JavaScript.ORDER_ATOMIC);
 
-    var code = `display.drawLine(${value_x0}, ${value_y0}, ${value_x1}, ${value_y1});\n`;
+    var code = `display.drawLine(${value_x0}, ${value_y0}, ${value_x1}, ${value_y1}, WHITE);\n`;
     return code;
 };
 
@@ -127,9 +127,9 @@ Blockly.JavaScript["i2c128x64_display_draw_rect"] = function (block) {
 
     var checkbox_fill = block.getFieldValue("fill") == "TRUE";
     if (checkbox_fill) {
-        var code = `display.fillRect(${value_x}, ${value_y}, ${value_width}, ${value_height});\n`;
+        var code = `display.fillRect(${value_x}, ${value_y}, ${value_width}, ${value_height}, WHITE);\n`;
     } else {
-        var code = `display.drawRect(${value_x}, ${value_y}, ${value_width}, ${value_height});\n`;
+        var code = `display.drawRect(${value_x}, ${value_y}, ${value_width}, ${value_height}, WHITE);\n`;
     }
     return code;
 };
@@ -143,9 +143,9 @@ Blockly.JavaScript["i2c128x64_display_draw_circle"] = function (block) {
 
     var checkbox_fill = block.getFieldValue("fill") == "TRUE";
     if (checkbox_fill) {
-        var code = `display.fillCircle(${value_x}, ${value_y}, ${value_r});\n`;
+        var code = `display.fillCircle(${value_x}, ${value_y}, ${value_r}, WHITE);\n`;
     } else {
-        var code = `display.drawCircle(${value_x}, ${value_y}, ${value_r});\n`;
+        var code = `display.drawCircle(${value_x}, ${value_y}, ${value_r}, WHITE);\n`;
     }
     return code;
 };
@@ -170,8 +170,8 @@ Blockly.JavaScript["i2c128x64_display_draw_pixel"] = function (block) {
     var value_x = Blockly.JavaScript.valueToCode(block, "x", Blockly.JavaScript.ORDER_ATOMIC);
     var value_y = Blockly.JavaScript.valueToCode(block, "y", Blockly.JavaScript.ORDER_ATOMIC);
 
-    var checkbox_color = (block.getFieldValue("color") == "TRUE") ? "WHITE" : "BLACK";
-    var code = `display.drawPixel(${value_x}, ${value_y}, ${checkbox_color});`;
+    var checkbox_color = (block.getFieldValue("color") == "TRUE") ? "WHITE" : "INVERSE";
+    var code = `display.drawPixel(${value_x}, ${value_y}, ${checkbox_color});\n`;
     return code;
 };
 

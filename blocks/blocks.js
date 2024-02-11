@@ -52,7 +52,7 @@ Blockly.Blocks['i2c128x64_display_begin'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("");
     this.setHelpUrl("");
   }
@@ -105,7 +105,7 @@ Blockly.Blocks["i2c128x64_create_image"] = {
     this.appendDummyInput().appendField("image size 128 x 64");
 
     this.setOutput(true, "std::vector<uint8_t>");
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip(
       "create image from PNG file (for best quality result please use size within 128x64 pixel otherwise, it'll resize)");
     this.setHelpUrl("");
@@ -132,7 +132,7 @@ Blockly.Blocks["i2c128x64_display_image"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("display image to display");
     this.setHelpUrl("");
   }
@@ -154,7 +154,7 @@ Blockly.Blocks["i2c128x64_display_print"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("display string at x,y");
     this.setHelpUrl("");
   }
@@ -166,7 +166,7 @@ Blockly.Blocks["i2c128x64_display_display"] = {
       .appendField("OLED display");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("display everything to screen");
     this.setHelpUrl("");
   }
@@ -178,7 +178,7 @@ Blockly.Blocks["i2c128x64_display_clear"] = {
       .appendField("OLED clear display");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("clear display");
     this.setHelpUrl("");
   }
@@ -203,7 +203,7 @@ Blockly.Blocks["i2c128x64_display_draw_line"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("draw line from (x0,y0) to (x1,y1)");
     this.setHelpUrl("");
   }
@@ -229,7 +229,7 @@ Blockly.Blocks["i2c128x64_display_draw_rect"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("draw rectangle to display");
     this.setHelpUrl("");
   }
@@ -252,7 +252,7 @@ Blockly.Blocks["i2c128x64_display_draw_circle"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("draw circle on screen");
     this.setHelpUrl("");
   }
@@ -278,7 +278,7 @@ Blockly.Blocks["i2c128x64_display_draw_progress_bar"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("draw progress bar on the screen");
     this.setHelpUrl("");
   }
@@ -298,7 +298,7 @@ Blockly.Blocks["i2c128x64_display_draw_pixel"] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("set pixel color");
     this.setHelpUrl("");
   }
@@ -310,7 +310,7 @@ Blockly.Blocks["i2c128x64_display_width"] = {
     this.appendDummyInput()
       .appendField("OLED get screen width");
     this.setOutput(true, "Number");
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("get screen size width in pixel");
     this.setHelpUrl("");
   }
@@ -321,7 +321,7 @@ Blockly.Blocks["i2c128x64_display_height"] = {
     this.appendDummyInput()
       .appendField("OLED get screen height");
     this.setOutput(true, "Number");
-    this.setColour(230);
+    this.setColour("#2980B9");
     this.setTooltip("get display screen height in pixel");
     this.setHelpUrl("");
   }

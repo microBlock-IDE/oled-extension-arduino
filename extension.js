@@ -5,7 +5,7 @@
     category: "Display",
     version: "1.0.0",
     icon: "/static/icon.png", // Category icon
-    color: "#8b507c", // Category color (recommend some blocks color)
+    color: "#2980B9", // Category color (recommend some blocks color)
     blocks: [ // Blocks in Category
         {
             xml:
