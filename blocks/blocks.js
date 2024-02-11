@@ -41,8 +41,7 @@ let floyd_steinberg = function (imageData, w) {
 Blockly.Blocks['i2c128x64_display_begin'] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
-      .appendField("begin address")
+      .appendField("OLED begin address")
       .appendField(new Blockly.FieldTextInput("0x3c"), "ADDR");
     this.appendDummyInput()
       .appendField("pin (SDA");
@@ -119,11 +118,9 @@ Blockly.Blocks["i2c128x64_create_image"] = {
 
 Blockly.Blocks["i2c128x64_display_image"] = {
   init: function () {
-    this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance");
     this.appendValueInput("img")
       .setCheck("std::vector<uint8_t>")
-      .appendField("draw image");
+      .appendField("OLED draw image");
     this.appendValueInput("x")
       .setCheck("Number")
       .appendField(" at (X");
@@ -148,25 +145,16 @@ Blockly.Blocks["i2c128x64_display_image"] = {
 Blockly.Blocks["i2c128x64_display_print"] = {
   init: function () {
     this.appendValueInput("text")
-      .setCheck("String")
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
-      .appendField("display text");
+      .appendField("OLED display text");
     this.appendValueInput("x")
       .setCheck("Number")
       .appendField("at (X");
     this.appendValueInput("y")
       .setCheck("Number")
       .appendField(", Y");
-    this.appendDummyInput()
-      .appendField(")  font")
-      .appendField(new Blockly.FieldDropdown([
-        [
-          "Arial_MT_10pt",
-          "ArialMT_Plain_10"
-        ],
-        ["Arial_MT_16pt", "ArialMT_Plain_16"],
-        ["Arial_MT_24pt", "ArialMT_Plain_24"]
-      ]), "font");
+      this.appendValueInput("size")
+      .setCheck("Number")
+      .appendField(", Size");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -179,8 +167,7 @@ Blockly.Blocks["i2c128x64_display_print"] = {
 Blockly.Blocks["i2c128x64_display_display"] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
-      .appendField("display");
+      .appendField("OLED display");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
@@ -192,8 +179,7 @@ Blockly.Blocks["i2c128x64_display_display"] = {
 Blockly.Blocks["i2c128x64_display_clear"] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
-      .appendField("clear display");
+      .appendField("OLED clear display");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(230);
@@ -205,9 +191,8 @@ Blockly.Blocks["i2c128x64_display_clear"] = {
 Blockly.Blocks["i2c128x64_display_draw_line"] = {
   init: function () {
     this.appendValueInput("x0")
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
       .setCheck("Number")
-      .appendField("draw line from (X");
+      .appendField("OLED draw line from (X");
     this.appendValueInput("y0")
       .setCheck("Number")
       .appendField(",Y");
@@ -231,9 +216,8 @@ Blockly.Blocks["i2c128x64_display_draw_line"] = {
 Blockly.Blocks["i2c128x64_display_draw_rect"] = {
   init: function () {
     this.appendValueInput("x")
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
       .setCheck("Number")
-      .appendField("draw rectangle at (X");
+      .appendField("OLED draw rectangle at (X");
     this.appendValueInput("y")
       .setCheck("Number")
       .appendField(", Y");
@@ -258,9 +242,8 @@ Blockly.Blocks["i2c128x64_display_draw_rect"] = {
 Blockly.Blocks["i2c128x64_display_draw_circle"] = {
   init: function () {
     this.appendValueInput("x")
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
       .setCheck("Number")
-      .appendField("draw circle at (X");
+      .appendField("OLED draw circle at (X");
     this.appendValueInput("y")
       .setCheck("Number")
       .appendField(",Y");
@@ -282,9 +265,8 @@ Blockly.Blocks["i2c128x64_display_draw_circle"] = {
 Blockly.Blocks["i2c128x64_display_draw_progress_bar"] = {
   init: function () {
     this.appendValueInput("x")
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
       .setCheck("Number")
-      .appendField("draw progress bar at (X");
+      .appendField("OLED draw progress bar at (X");
     this.appendValueInput("y")
       .setCheck("Number")
       .appendField(",Y");
@@ -309,9 +291,8 @@ Blockly.Blocks["i2c128x64_display_draw_progress_bar"] = {
 Blockly.Blocks["i2c128x64_display_draw_pixel"] = {
   init: function () {
     this.appendValueInput("x")
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
       .setCheck("Number")
-      .appendField("set pixel (X");
+      .appendField("OLED set pixel (X");
     this.appendValueInput("y")
       .setCheck("Number")
       .appendField(",Y");
@@ -331,8 +312,7 @@ Blockly.Blocks["i2c128x64_display_draw_pixel"] = {
 Blockly.Blocks["i2c128x64_display_width"] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
-      .appendField("get screen width");
+      .appendField("OLED get screen width");
     this.setOutput(true, "Number");
     this.setColour(230);
     this.setTooltip("get screen size width in pixel");
@@ -343,8 +323,7 @@ Blockly.Blocks["i2c128x64_display_width"] = {
 Blockly.Blocks["i2c128x64_display_height"] = {
   init: function () {
     this.appendDummyInput()
-      .appendField(new Blockly.FieldVariable("oled1", null, ["Plugin.OLED"], ["Plugin.OLED"]), "instance")
-      .appendField("get screen height");
+      .appendField("OLED get screen height");
     this.setOutput(true, "Number");
     this.setColour(230);
     this.setTooltip("get display screen height in pixel");
