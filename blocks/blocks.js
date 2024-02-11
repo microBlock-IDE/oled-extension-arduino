@@ -38,17 +38,7 @@ Blockly.Blocks['i2c128x64_display_begin'] = {
   init: function () {
     this.appendDummyInput()
       .appendField("OLED begin address")
-      .appendField(new Blockly.FieldTextInput("0x3c"), "ADDR");
-    this.appendDummyInput()
-      .appendField("pin (SDA");
-    this.appendValueInput("SDA")
-      .setCheck("Number")
-    this.appendDummyInput()
-      .appendField(", SCL");
-    this.appendValueInput("SCL")
-      .setCheck("Number");
-    this.appendDummyInput()
-      .appendField(")");
+      .appendField(new Blockly.FieldTextInput("0x3C"), "ADDR");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
